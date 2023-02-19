@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('partials/head', {title: 'Editando: ' + '¿?'}) %>
+<body>
+	<!-- Header -->
+	<%- include('partials/headerNavbar') %>
+	<!-- /Header -->
+
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Estás editando: <i><%= productToEdit.name %></i></h2>
+			</div>
+		</div>
+		<div class="col-12">
+			<form action="/products/edit/<%= productToEdit.id %>?_method=PATCH" method="POST">
+				<div class="row product-detail">
+					<div class="col-12 col-md-6">
+						<label for="name" class="form-label">Nombre del producto:</label>
+						<input type="text" id="name" name="name" placeholder="Ej: Zapatillas Reebok" required="required" class="form-input" value="<%= productToEdit.name %>">
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="price" class="form-label">Precio del producto:</label>
+						<input type="number" id="price" name="price" placeholder="Ej: 5678" required="required" class="form-input" value="<%= productToEdit.price %>">
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="discount" class="form-label">Descuento:</label>
+						<input type="number" id="discount" name="discount" placeholder="Ej: 15" required="required" class="form-input" value="<%= productToEdit.discount %>">
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="category" class="form-label">Categoría:</label>
+						<select name="category" id="category" class="form-input">
+							<option value="" <%= productToEdit.category == "" ? 'selected' : null %>>Elegí</option>
+							<option value="in-sale" <%= productToEdit.category == "in-sale" ? 'selected' : null %>>En oferta</option>
+							<option value="visited" <%= productToEdit.category == "" ? 'visited' : null %>>Últimos agregados</option>
+						</select>
+					</div>
+					<div class="col-12">
+						<label for="description" class="form-label">Descipción:</label>
+						<textarea name="description" id="description" class="form-input" required="required"><%= productToEdit.description %></textarea>
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="image" class="form-label">Imagen del producto:</label>
+						<figure class="product-box_image">
+							<img src="/images/products/<%= productToEdit.image %>" alt="imagen de producto">
+						</figure>
+						<input type="hidden"  name="oldImagen"  value="<%= productToEdit.imagen%>">
+						<input type="file" name="avatar" class="form-input">
+					</div>
+					<div class="col-12">
+						<button type="submit" class="buy-now-button">Guardar producto</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<!-- /todos los productos -->
+
+	<!-- footer -->
+	<%- include('partials/footer') %>
+	<!-- /footer -->
+</body>	
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('partials/head', {title: 'Formulario de creación'}) %>
+<body>
+	<!-- Header -->
+	<%- include('partials/headerNavbar') %>
+	<!-- /Header -->
+
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Formulario de creación de productos</h2>
+			</div>
+		</div>
+		<div class="col-12">
+			<form action="/products" method="POST" enctype="multipart/form-data">
+				<div class="row product-detail">
+					<div class="col-12 col-md-6">
+						<label for="name" class="form-label">Nombre del producto:</label>
+						<input type="text" 
+						       id="name"
+							   name="name"
+							   placeholder="Ej: Zapatillas Reebok"
+							   class="form-input <%= locals.errors && errors.name ? 'is-invalid' : null %>"
+							   value="<%= locals.oldData ? oldData.name : null %>"
+						>
+						<% if (locals.errors && errors.name) { %>
+							<div class="text-danger">
+								<%= errors.name.msg %> 
+							</div>
+						<% } %>
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="price" class="form-label">Precio del producto:</label>
+						<input type="number"
+						       id="price"
+							   name="price"
+							   placeholder="Ej: 5678"
+							   class="form-input <%= locals.errors && errors.price ? 'is-invalid' : null %>"
+							   value="<%= locals.oldData ? oldData.price : null %>">
+						<% if (locals.errors && errors.price) { %>
+							<div class="text-danger">
+								<%= errors.price.msg %> 
+							</div>
+						<% } %>
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="discount" class="form-label">Descuento:</label>
+						<input type="number"
+						       id="discount"
+							   name="discount"
+							   placeholder="Ej: 15"
+							   class="form-input <%= locals.errors && errors.discount ? 'is-invalid' : null %>"
+							   value="<%= locals.oldData ? oldData.discount : null %>">
+						<% if (locals.errors && errors.discount) { %>
+							<div class="text-danger">
+								<%= errors.discount.msg %> 
+							</div>
+						<% } %>
+					</div>
+					<div class="col-12 col-md-6">
+						<label for="category" class="form-label">Categoría:</label>
+						<select name="category"
+						        id="category"
+								class="form-input <%= locals.errors && errors.category ? 'is-invalid' : null %>"
+								value="<%= locals.oldData ? oldData.category : null %>">
+							<option value="">Elegí</option>
+							<% 
+							   let categorias = ['En oferta', 'Últimos agregados'];
+							%>
+							<% for (const oneCategory of categorias) { %>
+								<option value="<%= oneCategory %>"
+									  <%= locals.oldData && (oneCategory === oldData.category) ? 'selected' : null %> 
+									> <%= oneCategory %> </option>
+							<% } %>
+						</select>
+						<% if (locals.errors && errors.category) { %>
+							<div class="text-danger">
+								<%= errors.category.msg %> 
+							</div>
+						<% } %>
+					</div>
+					<div class="col-12">
+						<label for="description" class="form-label">Descripción:</label>
+						<textarea name="description" id="description" class="form-input <%= locals.errors && errors.description ? 'is-invalid' : null %>"></textarea>
+						<% if (locals.errors && errors.description) { %>
+							<div class="text-danger">
+								<%= errors.description.msg %> 
+							</div>
+						<% } %>
+					</div>
+					<div>
+						<label for="image" class="form-label">Imagen del producto:</label>
+						<input type="file" name="avatar" class="form-input">
+						<% if (locals.errors && errors.avatar) { %>
+							<div class="text-danger">
+								<%= errors.avatar.msg %> 
+							</div>
+						<% } %>
+					</div>
+					<div class="col-12">
+						<button type="submit" class="buy-now-button">Guardar producto</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<!-- /todos los productos -->
+
+	<!-- footer -->
+	<%- include('partials/footer') %>
+	<!-- /footer -->
+</body>	
+</html>

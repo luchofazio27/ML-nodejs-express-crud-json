@@ -1,0 +1,18 @@
+[
+ {
+  "id": 1,
+  "fullName": "Javi Herrera",
+  "email": "javi@dh.com",
+  "password": "$2a$10$kbHNepDXku1qKDytFK3RpuLtkW/dqMGDi4jXL7lNQUF8lm1HZ2.N.",
+  "country": "Colombia",
+  "avatar": "1609285636788_img.jpg"
+ },
+ {
+  "id": 2,
+  "fullName": "lucho",
+  "email": "lucho@mail.com",
+  "password": "$2a$10$77ZuxDJR3grmMJDqBcRMmO7XJyt9jtoJdvazN9b8MqpKu/7htHsQ.",
+  "country": "Argentina",
+  "avatar": "1672620476259_img.jpg"
+ }
+]

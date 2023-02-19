@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('partials/head', {title: 'Formulario de creación'}) %>
+<body>
+	<!-- Header -->
+	<%- include('partials/headerNavbar') %>
+	<!-- /Header -->
+
+<!-- Login-Form -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h2 class="products-title">Formulario de Login</h2>
+
+            <form method="POST" action="/user/login">
+                <div class="row">
+                    <div class="col-md-6 my-2">
+                        <div class="form-group">
+                            <label class="form-label"><b>Correo electrónico:</b></label>
+                            <input type="text" name="email" class="form-control">
+                            <% if (locals.errors && errors.email) { %>
+                                <div class="text-danger">
+                                    <%= errors.email.msg %>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-2">
+                        <div class="form-group">
+                            <label class="form-label"><b>Password:</b></label>
+                            <input type="password" name="password" class="form-control">
+                            <div class="invalid-feedback">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-2">
+                        <div class="form-group form-check">
+                            <label class="form-label">
+                                <input type="checkbox" class="form-check-input" name="remember_user">Recordar mi usuario
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12 my-3">
+                        <button type="submit" class="btn btn-primary">Loguearme</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //Login-Form -->
+
+	<!-- footer -->
+	<%- include('partials/footer') %>
+	<!-- /footer -->
+</body>	
+</html>
